@@ -1,4 +1,4 @@
-package com.internetx.security.service;
+package com.internetx.security.jwt.service;
 
 import com.internetx.domain.Role;
 import com.internetx.domain.User;
@@ -14,14 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * 1. CLASS TO IMPLEMENT
- * Security helper class
- * This class uses our user which has been fetched from DB by UserDetailsServiceImpl class
- * load by userName method.
- * This user will be fulfilled with user details. Userdetails are overwritten methods below.
- * At the end we have com.internetx.security.service.UserDetailsImpl object that hat credentials and user details.
- */
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -34,10 +27,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    /**
-     * @param user to get details
-     * @return com.internetx.security.service.UserDetailsImpl ( email + password +authorities )
-     */
+
     public static UserDetailsImpl build(User user) {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 

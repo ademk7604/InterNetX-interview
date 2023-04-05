@@ -9,12 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-/**
- * 4. CLASS TO IMPLEMENT
- * JWT helper class.
- * Created to everything we need about the JWT token.
- * JwtUtils class (bean) will be used main security worker class (AuthTokenFilter) in every request.
- */
+
 @Component
 public class JwtUtils {
 
@@ -42,14 +37,7 @@ public class JwtUtils {
                 .getSubject();
     }
 
-    /**
-     *   Parses the specified compact serialized JWT string based
-     *   on the builder's current configuration state and
-     *  returns the resulting Claims JWS instance.
-     * @param token to validate
-     * @return true or throw exception
-     * our token validator
-     */
+
     public boolean validateJwtToken(String token){
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);

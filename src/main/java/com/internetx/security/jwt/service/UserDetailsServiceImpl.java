@@ -1,4 +1,4 @@
-package com.internetx.security.service;
+package com.internetx.security.jwt.service;
 
 import com.internetx.domain.User;
 import com.internetx.service.UserService;
@@ -8,12 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-/**
- * 2. CLASS TO IMPLEMENT
- * Security helper class
- * this class is created to find the user from DB.
- * The user which has been found will be sent to com.internetx.security.service.UserDetailsImpl class build method.
- */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 

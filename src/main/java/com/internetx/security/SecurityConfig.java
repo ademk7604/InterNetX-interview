@@ -21,13 +21,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/**
- * Configuration class for spring security
- */
+
 @Configuration
-/**
- * we are enabling the security here
- */
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
@@ -38,9 +34,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        /**
-         * from any ip, we can enable to reach endpoints
-         */
+
         http.csrf().disable()
                 //TODO check-> https://www.baeldung.com/spring-security-session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -49,7 +43,7 @@ public class SecurityConfig {
                 .and().authorizeRequests().antMatchers("/register",
                         "/login").permitAll()
                 .anyRequest().authenticated();
-        //we are adding our filer to spring security
+
         http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
@@ -59,10 +53,6 @@ public class SecurityConfig {
         return new AuthTokenFilter();
     }
 
-    /**
-     * we are allowing all headers, origins and methods here.
-     * @return WebMvcConfigurer
-     */
     @Bean
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {
@@ -106,11 +96,6 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer(){
         return web -> web.ignoring().antMatchers(AUTH_WHITE_LIST);
     }
-
-
-
-
-
 
 
 

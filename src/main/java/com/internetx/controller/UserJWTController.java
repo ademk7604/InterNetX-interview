@@ -38,16 +38,7 @@ public class UserJWTController {
         response.setSuccess(true);
         return  new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-    /**
-     * @param loginRequest Login request will be validated by @Valid annotation.
-     *                    authManager bean will return us a authentication object.
-     *                     this object is created by LoginRequest email and password values.
-     *                     If we do not have any authentication exception, then we create a token.
-     *                     PAY ATTENTION -> if spring security configured correctly,
-     *                     UsernamePasswordAuthenticationToken and Authentication makes everything for us
-     *                     by the help of the spring security context.
-     * @return LoginResponse with token.
-     */
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponse>authenticate(@Valid @RequestBody LoginRequest loginRequest){
 
